@@ -1,0 +1,23 @@
+{
+    "name": "vgraillot/test",
+    "description": "Application for course on test",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { "Tests\\": "tests/" }
+    },
+    "authors": [
+        {
+            "name": "Vincent GRAILLOT",
+            "email": "vgraillot@umanit.fr"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    }
+}
