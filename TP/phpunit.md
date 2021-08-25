@@ -18,7 +18,7 @@ Et cela uniquement lors de l'installation en mode "dev".
 ## Faire les tests pour la classe `App\Util\ChainedList\Element`
 
 1. Créez la même arborescence de répertoire présent pour `src` dans `tests`
-2. Créez une classe de test portant le nom de l'objet et finissant pas `Test` (ex. : `ElementTest`)
+2. Créez une classe de test portant le nom de l'objet et finissant par `Test` (ex. : `ElementTest`)
 3. Le namespace doit être `Tests\Util\ChainedList` (voir le `composer.json`, section `autoload-dev > psr-4`)
 4. La classe doit étendre `PHPUnit\Framework\TestCase`. Cette classe fournit un ensemble de méthode permettant de vérifier le résultat de votre test.  
 Ces méthodes sont documentées dans l'`APPENDIX` de la documentation partie `Assertions` : https://phpunit.readthedocs.io/en/9.5/assertions.html  
@@ -87,7 +87,7 @@ Faite la classe de test pour chainedList.
 ### Utiliser un `dataProvider`
 
 Un `dataProvider` permet de passer un ensemble d'élément à notre fonction de test. Il doit retouner un tableau à 2 dimensions :
-   - La 1ière dimension est un cas de test. Elle peut avoir une clé de type texte. Celle clé sera le nom du cas de test.
+   - La 1ière dimension est un cas de test. Elle peut avoir une clé de type texte. Cette clé sera le nom du cas de test.
    - Le 2d sont les paramètres passés à la méthode utilisant ce `provider`
 
 Pour qu'une méthode de test utilise un provider, il faut ajouter l'annotation `dataprovider` sur la méthode.
