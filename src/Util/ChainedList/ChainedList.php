@@ -46,9 +46,9 @@ class ChainedList implements ChainedListInterface
     }
     public function next()
     {
-        if ($this->position < $this->nb) {
+        ++$this->position;
+        if ($this->position <= $this->nb) {
             $this->currentElement = $this->currentElement->getNext();
-            ++$this->position;
             return true;
         }
         return false;
@@ -62,12 +62,12 @@ class ChainedList implements ChainedListInterface
     public function rewind()
     {
         $this->currentElement = $this->firstElement;
-        $this->position = 0;
+        $this->position = $this->nb === 0 ? 0 : 1;
     }
 
     public function valid()
     {
-        return $this->position <= $this->nb;
+        return $this->nb > 0 && $this->position <= $this->nb;
     }
 
     public function add($data)
@@ -76,6 +76,8 @@ class ChainedList implements ChainedListInterface
 
         if (0 === $this->nb) {
             $this->firstElement = $element;
+            $this->currentElement = $element;
+            $this->position = 1;
         } else {
             $element->setPrevious($this->lastElement);
             $this->lastElement->setNext($element);
@@ -88,7 +90,7 @@ class ChainedList implements ChainedListInterface
 
     public function remove($position)
     {
-        if ($this->nb <= $position || $position < 1) {
+        if ($this->nb < $position || $position < 1) {
             throw new \ValueError('invalid position');
         }
 
@@ -115,6 +117,14 @@ class ChainedList implements ChainedListInterface
             if (1 < $it && $this->nb > $it) {
                 $toBeRemove->getPrevious()->setNext($toBeRemove->getNext());
                 $toBeRemove->getNext()->setPrevious($toBeRemove->getPrevious());
+            }
+            if ($this->position === $position) {
+                if ($this->nb === $it) {
+                    $this->currentElement = $toBeRemove->getPrevious();
+                    --$this->position;
+                } else {
+                    $this->currentElement = $toBeRemove->getNext();
+                }
             }
         }
 
