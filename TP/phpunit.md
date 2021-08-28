@@ -75,7 +75,7 @@ Dans ce cas, si `testGetElement` échoue alors `testSetElement` ne sera pas jou�
 
 ### Tips
 
-Ajouter l'option `--testdox` a la commande pour avoir un affichage plus détaillé.
+Ajouter l'option `--testdox` à la commande pour avoir un affichage plus détaillé.
 ```shell
 php ./vendor/bin/phpunit --testdox tests
 ```
